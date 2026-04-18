@@ -37,7 +37,7 @@ Always use these MCP tools. Never read/write vault files directly.
 - **Search before creating.** Avoid duplicates.
 - **Always add wikilinks.** Connect related concepts with `[[note-name]]`.
 - **Keep notes concise.** Clarity over length.
-- **Respect folder roles.** See `meta/vault-map.md`.
+- **Respect folder roles.** See `[[meta/vault-map.md]]`.
 - **Use templates.** Apply the right template from `templates/`.
 
 ## Vault Structure
