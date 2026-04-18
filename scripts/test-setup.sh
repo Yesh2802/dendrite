@@ -13,7 +13,7 @@ assert_tier() {
   local expected_tier="$2"
 
   output=$(env -i HOME="$FAKE_HOME" PATH="/usr/bin:/bin" bash "$SCRIPT" 2>&1 || true)
-  actual_tier=$(echo "$output" | grep "Detected Tier:" | sed 's/.*Tier: //' | tr -d '[:space:]')
+  actual_tier=$(echo "$output" | sed 's/\x1b\[[0-9;]*m//g' | grep "Detected Tier:" | sed 's/.*Tier: //' | tr -d '[:space:]')
 
   if [ "$actual_tier" = "$expected_tier" ]; then
     echo "  PASS: $description (tier=$actual_tier)"
