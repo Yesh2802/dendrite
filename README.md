@@ -6,6 +6,16 @@ Claude Code + Obsidian + Gstack — wired together into a local-first, semantica
 
 ---
 
+## Requirements
+
+- **OS:** Windows 10 or 11
+- **Claude Code** installed and logged in — [download](https://claude.ai/download)
+- **Obsidian** (free tier works) — [download](https://obsidian.md/download)
+- **Git** 2.30+
+- **~500 MB** free disk space (gstack + bun + Smart Connections embedding model)
+
+---
+
 ## What You Get
 
 - **Ask Claude about any idea you've ever captured** — semantic search finds it, no keywords needed
@@ -113,3 +123,21 @@ Your local architecture changes — new templates, vault tweaks, CLAUDE.md updat
 ## Troubleshooting
 
 See [docs/troubleshooting.md](docs/troubleshooting.md)
+
+---
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md)
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE)

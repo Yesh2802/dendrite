@@ -1,3 +1,15 @@
 .DS_Store
 *.log
 .env
+*.pem
+*.key
+*api-key*
+*secret*
+
+# Never sync Obsidian plugin data (contains API keys)
+.obsidian/
+vault-scaffold/.obsidian/
+vault-scaffold/.mcp.json.example
+
+# OS
+Thumbs.db

@@ -51,7 +51,7 @@ else
   warn "Claude Code — not detected in PATH (may still be running)"
 fi
 
-# Obsidian REST API
+# Obsidian REST API (HTTPS on 27124)
 OBSIDIAN_UP=false
 if curl -sk https://127.0.0.1:27124/ 2>/dev/null | grep -q "Local REST API"; then
   ok "Obsidian Local REST API — running"
@@ -62,9 +62,22 @@ else
   MISSING+=("obsidian-rest-api")
 fi
 
-# MCP Tools
+# MCP Tools — portable probe (curl first, then ss, then netstat)
 if [ "$OBSIDIAN_UP" = true ]; then
-  if netstat -an 2>/dev/null | grep -q "27123.*LISTEN"; then
+  MCP_UP=false
+  # Try curl probe first (works everywhere curl is present)
+  HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:27123/ 2>/dev/null)
+  if echo "$HTTP_CODE" | grep -qE "^(200|404|405)$"; then
+    MCP_UP=true
+  # Fall back to ss
+  elif ss -ltn 2>/dev/null | grep -q ":27123"; then
+    MCP_UP=true
+  # Last resort: netstat
+  elif netstat -an 2>/dev/null | grep -q "27123.*LISTEN"; then
+    MCP_UP=true
+  fi
+
+  if [ "$MCP_UP" = true ]; then
     ok "MCP Tools — server running on port 27123"
   else
     fail "MCP Tools — plugin installed but server not running"

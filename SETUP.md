@@ -11,7 +11,7 @@ You are setting up the DENDRITE architecture: Claude Code + Obsidian + Gstack wi
 Run the prerequisite check:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Yesh2802/dendrite/main/scripts/check-prerequisites.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Yesh2802/dendrite/v0.1.0/scripts/check-prerequisites.sh | bash
 ```
 
 Report the detected tier clearly:
@@ -30,7 +30,15 @@ Then proceed to Step 2.
 if ! command -v bun &>/dev/null && [ ! -f "$HOME/.bun/bin/bun" ]; then
   curl -fsSL https://bun.sh/install | bash
   export PATH="$HOME/.bun/bin:$PATH"
-  # Create bunx wrapper for Windows
+fi
+
+# Persist PATH for future sessions (idempotent — skip if already present)
+if ! grep -q 'bun/bin' ~/.bashrc 2>/dev/null; then
+  echo 'export PATH="$HOME/.bun/bin:$PATH"' >> ~/.bashrc
+fi
+
+# Create bunx wrapper only if bun doesn't already ship one
+if ! command -v bunx &>/dev/null; then
   echo '#!/usr/bin/env bash' > ~/.bun/bin/bunx
   echo 'exec "$(dirname "$0")/bun" x "$@"' >> ~/.bun/bin/bunx
   chmod +x ~/.bun/bin/bunx
@@ -99,7 +107,7 @@ for folder in 00-inbox 01-ideas 02-projects 03-research 04-knowledge 05-life 06-
 done
 
 # Copy scaffold files from repo
-SCAFFOLD_URL="https://raw.githubusercontent.com/Yesh2802/dendrite/main/vault-scaffold"
+SCAFFOLD_URL="https://raw.githubusercontent.com/Yesh2802/dendrite/v0.1.0/vault-scaffold"
 
 # meta files
 mkdir -p "$VAULT/meta"
