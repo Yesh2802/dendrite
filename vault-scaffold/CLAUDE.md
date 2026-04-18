@@ -27,8 +27,8 @@ Always use these MCP tools. Never read/write vault files directly.
 
 **Always semantic search before reading.** Never load a note without confirming it's relevant.
 
-1. `search_vault_smart` with keywords related to the task
-2. Read only the top matching notes
+1. `mcp__obsidian__search_vault_smart` with keywords related to the task
+2. Read only the top matching notes via `mcp__obsidian__get_vault_file`
 3. Act — do not list or scan the whole vault
 
 ## Rules
