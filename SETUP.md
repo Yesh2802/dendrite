@@ -11,7 +11,7 @@ You are setting up the DENDRITE architecture: Claude Code + Obsidian + Gstack wi
 Run the prerequisite check:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/GITHUB_USERNAME/dendrite/main/scripts/check-prerequisites.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Yesh2802/dendrite/main/scripts/check-prerequisites.sh | bash
 ```
 
 Report the detected tier clearly:
@@ -99,7 +99,7 @@ for folder in 00-inbox 01-ideas 02-projects 03-research 04-knowledge 05-life 06-
 done
 
 # Copy scaffold files from repo
-SCAFFOLD_URL="https://raw.githubusercontent.com/GITHUB_USERNAME/dendrite/main/vault-scaffold"
+SCAFFOLD_URL="https://raw.githubusercontent.com/Yesh2802/dendrite/main/vault-scaffold"
 
 # meta files
 mkdir -p "$VAULT/meta"
